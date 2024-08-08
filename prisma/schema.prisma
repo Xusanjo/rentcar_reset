@@ -1,0 +1,96 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+// datasource db {
+//   provider = "postgresql"
+//   url      = env("DATABASE_URL")
+// }
+
+// model User {
+//   id       Int    @id @default(autoincrement())
+//   email    String @unique
+//   password String
+//   avatar   String? 
+// }
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  avatar    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Brand {
+  id   Int    @id @default(autoincrement())
+  name String
+}
+
+model Contact {
+  id    Int    @id @default(autoincrement())
+  name  String
+  email String
+}
+
+model Payment {
+  id     Int    @id @default(autoincrement())
+  amount Float
+}
+
+model CarFindeks {
+  id       Int    @id @default(autoincrement())
+  score    Int
+}
+
+model CarImage {
+  id        Int    @id @default(autoincrement())
+  carId     Int
+  imageUrl  String
+}
+
+
+model Car {
+  id      Int    @id @default(autoincrement())
+  brand   String
+  model   String
+}
+
+model Color {
+  id   Int    @id @default(autoincrement())
+  name String
+}
+
+model Customer {
+  id    Int    @id @default(autoincrement())
+  name  String
+  email String
+}
+
+model Findeks {
+  id       Int    @id @default(autoincrement())
+  score    Int
+}
+
+model Rental {
+  id       Int    @id @default(autoincrement())
+  carId    Int
+  customer String
+}
